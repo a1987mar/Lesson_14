@@ -24,9 +24,9 @@ func main() {
 
 	http.HandleFunc("POST /put_document", handlers.HandlePutDocument)
 	http.HandleFunc("DELETE /delete_document/{nameCol}/{idDoc}", handlers.HandleDeleteDocument)
-
+	http.HandleFunc("GET /get_document/{nameCol}/{nameuser}", handlers.HandleGetDocument)
 	http.HandleFunc("POST /create_collection", handlers.HandleNewCollect)
-	http.HandleFunc("GET /get_collection/{name}", handlers.HandleGetCollect)
+	http.HandleFunc("GET /list_documents/{name}", handlers.HandleGetCollect)
 	http.HandleFunc("GET /list_collections", handlers.HandleListCollections)
 	http.HandleFunc("DELETE /delete_collection/{name}", handlers.HandleDeleteCollect)
 

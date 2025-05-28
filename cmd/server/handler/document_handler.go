@@ -78,3 +78,29 @@ func (h *Handler) HandleDeleteDocument(w http.ResponseWriter, r *http.Request) {
 	}
 	JSON(w, result, http.StatusOK)
 }
+
+func (h *Handler) HandleGetDocument(w http.ResponseWriter, r *http.Request) {
+	getNameUser := r.PathValue("nameuser")
+	getNameCol := r.PathValue("nameCol")
+	if getNameUser == "" {
+		JSON(w, "Document not found", http.StatusBadRequest)
+		return
+	}
+	if getNameCol == "" {
+		JSON(w, "Document not found", http.StatusBadRequest)
+		return
+	}
+	filter := bson.M{"name": getNameUser}
+	result, err := h.db.Collection(getNameCol).Find(r.Context(), filter)
+	if err != nil {
+		JSON(w, "Record not found in collection", http.StatusOK)
+	}
+	defer result.Close(r.Context())
+
+	var results []Document
+	if err := result.All(r.Context(), &results); err != nil {
+		JSON(w, map[string]string{"Decode error": err.Error()}, http.StatusInternalServerError)
+		return
+	}
+	JSON(w, results, http.StatusOK)
+}

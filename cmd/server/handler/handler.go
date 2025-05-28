@@ -18,11 +18,6 @@ type NewCollect struct {
 	Collection_name string `bson:"collection_name"`
 }
 
-type DocumentCollection struct {
-	CollectionName string     `bson:"collection_name"`
-	Document       []Document `bson:"document"`
-}
-
 type Doc struct {
 	Document Document `bson:"document"`
 }
