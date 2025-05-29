@@ -1,0 +1,10 @@
+services:
+  mongo:
+    image: mongo:7.0
+    command: mongod --auth
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: app
+    ports:
+      - 27017:27017

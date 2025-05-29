@@ -1,0 +1,91 @@
+
+POST 127.0.0.1:8080/create_collection HTTP/1.1
+
+{
+  "collection_name":"users"
+}
+###
+POST 127.0.0.1:8080/put_document
+
+{
+  "collection_name": "users",
+  "document": {
+    "userid": "1",
+    "name": "Stepan",
+    "age": 30
+  }
+}
+###
+POST 127.0.0.1:8080/put_document
+
+{
+  "collection_name": "users",
+  "document": {
+    "userid": "2",
+    "name": "Sergiy",
+    "age": 23
+  }
+}
+###
+GET 127.0.0.1:8080/list_documents/users HTTP/1.1
+
+###
+GET 127.0.0.1:8080/get_document/users/Stepan HTTP/1.1
+
+###
+DELETE 127.0.0.1:8080/delete_collection/users HTTP/1.1
+
+###
+DELETE 127.0.0.1:8080/delete_document/users/2
+
+
+###
+POST 127.0.0.1:8080/create_collection HTTP/1.1
+
+{
+    "collection_name":"students"
+}
+###
+POST 127.0.0.1:8080/put_document
+
+{
+  "collection_name": "students",
+  "document": {
+    "userid": "1",
+    "name": "Taras",
+    "age": 23
+  }
+}
+###
+POST 127.0.0.1:8080/put_document
+
+{
+  "collection_name": "students",
+  "document": {
+    "userid": "2",
+    "name": "Denis",
+    "age":22
+  }
+}
+
+###
+GET 127.0.0.1:8080/list_documents/students HTTP/1.1
+###
+
+DELETE 127.0.0.1:8080/delete_collection/students HTTP/1.1
+
+###
+GET 127.0.0.1:8080/list_collections HTTP/1.1
+
+
+###
+POST 127.0.0.1:8080/create_collection HTTP/1.1
+
+{
+    "collection_name":"visitors"
+}
+
+###
+DELETE 127.0.0.1:8080/delete_collection/visitors
+
+
